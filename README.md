@@ -20,7 +20,6 @@ A practical home-lab project for learning Linux server administration, networkin
 - Installed the public key on the server with `ssh-copy-id`.
 - Verified key-based login.
 - Investigated stale neighbour-cache entries and used a targeted neighbour-cache flush to restore connectivity.
-- Documented the next hardening steps without assuming that unverified settings were complete.
 
 ### Day 1 documentation
 
@@ -29,11 +28,30 @@ A practical home-lab project for learning Linux server administration, networkin
 - [SSH key authentication and hardening](docs/day-01/ssh-key-authentication.md)
 - [Command reference](docs/day-01/command-reference.md)
 
+## Day 2 — Intrusion prevention and auditing
+
+- Installed, enabled, and verified Fail2ban with an active `sshd` jail.
+- Documented the SSH jail policy: 4 retries within 10 minutes, followed by a 5-minute ban.
+- Installed and enabled `auditd`.
+- Added persistent audit rules for writes/attribute changes to `/etc/passwd` and execution of `/usr/bin/sudo`.
+- Verified the services and audit rules after reboot.
+- Confirmed UFW remained active with OpenSSH allowed.
+
+### Day 2 documentation and configuration examples
+
+- [Day 2 overview](docs/day-02/README.md)
+- [Fail2ban SSH protection](docs/day-02/fail2ban-ssh-protection.md)
+- [auditd monitoring](docs/day-02/auditd-monitoring.md)
+- [Fail2ban SSH jail example](configs/fail2ban/sshd.local)
+- [Persistent audit rules example](configs/auditd/50-home-server.rules)
+
+The files under `configs/` are example configuration files. Review local policy before installing them; they are not a replacement for checking the live server configuration.
+
 ## Learning roadmap
 
 1. **Day 1:** Networking, OpenSSH, and key-based authentication.
-2. **Next:** SSH hardening, firewall rules, and automatic security updates.
-3. **Later:** Intrusion-prevention and auditing tools, network discovery, packet inspection, and a small security-event monitor.
+2. **Day 2:** Fail2ban intrusion prevention and auditd event auditing.
+3. **Next:** Network discovery, packet inspection, and a small security-event monitor.
 
 ## Safe lab practices
 
@@ -42,3 +60,4 @@ A practical home-lab project for learning Linux server administration, networkin
 - Validate SSH configuration before reloading the service.
 - Allow SSH through the firewall before enabling a restrictive incoming policy.
 - Verify configuration and service status rather than relying only on installation success.
+- Keep private keys, credentials, real patient/user data, and unredacted logs out of this public repository.

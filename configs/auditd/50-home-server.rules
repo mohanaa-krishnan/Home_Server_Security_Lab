@@ -1,0 +1,5 @@
+# Focused audit rules used in the home-server Day 2 lab.
+# Install as /etc/audit/rules.d/50-home-server.rules.
+
+-w /etc/passwd -p wa -k identity_changes
+-w /usr/bin/sudo -p x -k sudo_exec

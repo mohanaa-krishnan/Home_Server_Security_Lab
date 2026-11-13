@@ -1,0 +1,8 @@
+# Local Fail2ban override for the OpenSSH jail.
+# Install as /etc/fail2ban/jail.d/sshd.local after reviewing local defaults.
+
+[sshd]
+enabled = true
+maxretry = 4
+findtime = 10m
+bantime = 5m

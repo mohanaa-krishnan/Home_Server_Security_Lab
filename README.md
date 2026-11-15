@@ -47,6 +47,26 @@ A practical home-lab project for learning Linux server administration, networkin
 
 The files under `configs/` are example configuration files. Review local policy before installing them; they are not a replacement for checking the live server configuration.
 
+
+## Day 3 — Network discovery and packet inspection
+
+- Used Nmap for authorized home-LAN host discovery and TCP service checks.
+- Recorded five active devices in the observed discovery and identified SSH on TCP port 22 on the server.
+- Configured an hourly cron schedule for the LAN monitoring script and checked its execution log.
+- Created local baseline, previous-state, port-state, and change-log files.
+- Used tcpdump with a client-host and SSH-port filter to inspect traffic.
+- Documented an unresolved Nmap XML extraction issue; automated comparisons must not trust empty or malformed parse results.
+
+### Day 3 documentation and sanitized examples
+
+- [Day 3 overview](docs/day-03/README.md)
+- [Nmap LAN discovery and monitoring](docs/day-03/nmap-lan-discovery.md)
+- [tcpdump packet inspection](docs/day-03/tcpdump-packet-inspection.md)
+- [LAN monitor configuration notes](configs/lan-monitor/README.md)
+- [Hourly cron example](configs/lan-monitor/lan-scan.cron.example)
+
+The live scan script, network inventory, logs, and packet captures remain on the private server and are not included in this public repository. The XML parsing issue and the need for an end-to-end scheduled change test are explicitly recorded as follow-up work.
+
 ## Learning roadmap
 
 1. **Day 1:** Networking, OpenSSH, and key-based authentication.

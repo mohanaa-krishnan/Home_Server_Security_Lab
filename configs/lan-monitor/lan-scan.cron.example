@@ -1,0 +1,4 @@
+# Run the LAN monitor at the start of every hour.
+# Replace <server_user> with the Ubuntu server account.
+# Install with: crontab -e
+0 * * * * /home/<server_user>/lan-monitor/lan-scan.sh >> /home/<server_user>/lan-monitor/cron.log 2>&1

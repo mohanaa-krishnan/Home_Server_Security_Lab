@@ -67,6 +67,24 @@ The files under `configs/` are example configuration files. Review local policy 
 
 The live scan script, network inventory, logs, and packet captures remain on the private server and are not included in this public repository. The XML parsing issue and the need for an end-to-end scheduled change test are explicitly recorded as follow-up work.
 
+
+## Day 4 — Python security event monitor
+
+- Documented the Python monitor created on the Ubuntu server at `~/lan-monitor/security_monitor.py`.
+- Recorded five monitored sources: Fail2ban, auditd, LAN change log, SSH authentication log, and UFW/kernel log.
+- Documented the two-second polling interval and in-memory event correlation thresholds.
+- Recorded verification: Python compile check, five READY sources, live audit/LAN/SSH/UFW test events, and synthetic Fail2ban escalation.
+- Documented limitations: manual startup, in-memory counters, terminal-only alerts, and future log-rotation/parser hardening.
+
+### Day 4 documentation and deployment notes
+
+- [Day 4 overview](docs/day-04/README.md)
+- [Event sources and alert rules](docs/day-04/event-sources-and-alert-rules.md)
+- [Testing and limitations](docs/day-04/testing-and-limitations.md)
+- [Security monitor deployment notes](configs/security-monitor/README.md)
+
+The exact live monitor source was not copied into this commit; the repository records its verified design and behaviour rather than publishing a reconstructed script as if it were the original. Runtime logs and alert output remain private.
+
 ## Learning roadmap
 
 1. **Day 1:** Networking, OpenSSH, and key-based authentication.

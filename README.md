@@ -85,6 +85,24 @@ The live scan script, network inventory, logs, and packet captures remain on the
 
 The exact live monitor source was not copied into this commit; the repository records its verified design and behaviour rather than publishing a reconstructed script as if it were the original. Runtime logs and alert output remain private.
 
+
+## Day 5 — Live detection and final verification
+
+- Tested three controlled invalid SSH authentication attempts from the authorized client; the Python monitor escalated MEDIUM, MEDIUM, then HIGH.
+- Ran an authorized Nmap test that generated a UFW event detected by the monitor.
+- Verified five monitor sources reported READY.
+- After reboot, checked SSH, Fail2ban, auditd, UFW, and the persistent audit rules.
+- Checked the hourly LAN scan schedule and state files; a scheduled change-detection result was not confirmed.
+- Recorded remaining work: fix Nmap XML parsing, prove scheduled LAN change detection, verify unattended-upgrades periodic settings, and improve monitor persistence and log handling.
+
+### Day 5 documentation
+
+- [Day 5 overview](docs/day-05/README.md)
+- [Final verification checklist](docs/day-05/final-verification-checklist.md)
+- [Project closeout and next steps](docs/day-05/project-closeout-and-next-steps.md)
+
+Day 5 records observed test results and explicitly separates completed verification from remaining work. Do not treat controlled test events as evidence of an external compromise or claim production-grade security.
+
 ## Learning roadmap
 
 1. **Day 1:** Networking, OpenSSH, and key-based authentication.
